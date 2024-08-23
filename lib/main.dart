@@ -1,54 +1,42 @@
-import 'package:flutter/material.dart';
+/*
+Question
 
-void main() {
-  runApp(MyApp());
+There is a base class called Media and it has a method called play() that prints
+“Playing media...”.
+You need to create a derived class called Song that inherits from the Media class and adds
+an additional attribute called artist (string). The Song class should override the play()
+method to print the artist name along with the media play message like
+“Playing song by $artist...'”.
+In main() create one instance of Media and one of Song. Call their play() methods that print
+proper messages.
+
+
+*/
+
+
+class Media {
+  void play() {
+    print('Playing media...');
+  }
 }
 
-class MyApp extends StatelessWidget {
+class Song extends Media {
+  String artist;
+
+  Song(this.artist);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Text Styling & Snackbar Example'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Title Text
-              Text(
-                'Flutter Text Styling',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              // Subtitle Text
-              Text(
-                'Experiment with text styles',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              SizedBox(height: 20),
-              // TextButton
-              TextButton(
-                onPressed: () {
-                  // Snackbar
-                  final snackBar = SnackBar(
-                    content: Text('You clicked the button!'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                child: Text('Click Me'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+  void play() {
+    print('Playing song by $artist...');
   }
-} //mahedy
+}
+
+
+
+void main() {
+  Media media = Media();
+  media.play();
+
+  Song song = Song('John Doe');
+  song.play();
+}
